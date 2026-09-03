@@ -1,16 +1,20 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void) {
-    int nums[5];
-    for (int i = 0; i < 5; i++) scanf("%d", &nums[i]);
+    char buf[100];
+    fgets(buf, sizeof buf, stdin);
 
-    int best = nums[0];
-
-    for (int i = 1; i < 5; i++) {
-        /* TODO: if nums[i] is bigger than best, best becomes nums[i] */
-        if (nums[i] > best) best = nums[i];
+    /* TODO: fgets kept the newline it stopped on. If buf still ends with
+       one, overwrite that character with '\0' so strlen stops before it. */
+    int len = 0;
+    while (len < 100 && buf[len] != '\n'){
+        len++;
+    }
+    if (len < 100) {
+        buf[len] = '\0';
     }
 
-    printf("%d\n", best);
+    printf("%zu\n", strlen(buf));
     return 0;
 }
