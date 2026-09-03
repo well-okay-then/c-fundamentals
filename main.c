@@ -1,11 +1,16 @@
 #include <stdio.h>
 
 int main(void) {
-    int w, h;
-    scanf("%d", &w);
-    scanf("%d", &h);
-    // Print w * h.
-    //
-    printf("%d", w * h);
+    int nums[5];
+    for (int i = 0; i < 5; i++) scanf("%d", &nums[i]);
+
+    int best = nums[0];
+
+    for (int i = 1; i < 5; i++) {
+        /* TODO: if nums[i] is bigger than best, best becomes nums[i] */
+        if (nums[i] > best) best = nums[i];
+    }
+
+    printf("%d\n", best);
     return 0;
 }
