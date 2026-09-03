@@ -1,20 +1,26 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(void) {
-    char buf[100];
-    fgets(buf, sizeof buf, stdin);
+    int n;
+    scanf("%d", &n);
 
-    /* TODO: fgets kept the newline it stopped on. If buf still ends with
-       one, overwrite that character with '\0' so strlen stops before it. */
-    int len = 0;
-    while (len < 100 && buf[len] != '\n'){
-        len++;
-    }
-    if (len < 100) {
-        buf[len] = '\0';
+    /* Print exactly one line:
+         n divisible by 15 -> FizzBuzz
+         n divisible by 3  -> Fizz
+         n divisible by 5  -> Buzz
+         anything else     -> n itself
+
+       TODO: write the if / else if / else chain. All four cases. */
+
+    if (n % 15 == 0) {
+        printf("FizzBuzz");
+    } else if (n % 3 == 0) {
+        printf("Fizz");
+    } else if (n % 5 == 0) {
+        printf("Buzz");
+    } else {
+        printf("%d", n);
     }
 
-    printf("%zu\n", strlen(buf));
     return 0;
 }
