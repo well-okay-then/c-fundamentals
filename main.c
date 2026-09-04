@@ -1,22 +1,16 @@
 #include <stdio.h>
-
-typedef struct {
-    int x, y;
-} Point;
+#include <stdlib.h>
 
 int main(void) {
-    int x1, y1, x2, y2;
-    scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
-    // Build two Points, compute squared distance, print.
-    Point p1 = {x1, y1};
-    Point p2 = {x2, y2};
+    int n;
+    scanf("%d", &n);
+    int* nums = malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) scanf("%d", &nums[i]);
 
-    int xSq = (p1.x - p2.x) * (p1.x - p2.x);
-    int ySq = (p1.y - p2.y) * (p1.y - p2.y);
-    int result = xSq + ySq;
-
-    printf("%d", result);
-
-
+    int total = 0;
+    for (int i = 0; i < n; ++i) total += nums[i];
+    printf("%d", total);
+    free(nums);
+    // Sum, print, then free.
     return 0;
 }
